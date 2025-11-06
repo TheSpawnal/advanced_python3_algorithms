@@ -128,3 +128,39 @@ if __name__ == "__main__":
         if test:
             merge_sort(test, 0, len(test) - 1)
         print(f"{original} → {test}")
+
+
+
+
+#alternative with slicing
+def merge_sort_pythonic(A):
+    """Pythonic merge sort using slicing."""
+    if len(A) <= 1:
+        return A
+    
+    mid = len(A) // 2
+    left = merge_sort_pythonic(A[:mid])
+    right = merge_sort_pythonic(A[mid:])
+    
+    # Merge
+    result = []
+    i = j = 0
+    
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result
+
+
+# Usage
+array = [38, 27, 43, 3, 9, 82, 10]
+sorted_array = merge_sort_pythonic(array)
+print(sorted_array)
