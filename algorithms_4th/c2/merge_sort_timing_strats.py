@@ -258,3 +258,35 @@ def profile_merge_sort():
 
 # Uncomment to run profiling
 # profile_merge_sort()
+
+
+
+
+
+
+# Additional Profiling Tools
+# 1. line_profiler (line-by-line timing)
+# bash# Install
+# pip install line-profiler
+
+# # Usage: Add @profile decorator to functions
+# # Run: kernprof -l -v merge_sort.py
+# 2. memory_profiler (memory usage)
+# bash# Install
+# pip install memory-profiler
+
+# # Usage: Add @profile decorator
+# # Run: python -m memory_profiler merge_sort.py
+# 3. py-spy (sampling profiler, no code changes needed)
+# bash# Install
+# pip install py-spy
+
+# # Run your script with profiling
+# py-spy record -o profile.svg -- python merge_sort.py
+# Key Timing Metrics You'll See:
+
+# time.perf_counter(): Most accurate wall-clock time
+# timeit: Runs multiple iterations, disables garbage collection
+# cProfile: Shows function call counts and cumulative time
+
+# Note: Python is interpreted, not compiled like C/C++. There's no traditional "compile time" - the timing captures execution time of the bytecode.
