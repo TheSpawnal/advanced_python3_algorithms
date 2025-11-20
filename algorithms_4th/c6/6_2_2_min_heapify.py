@@ -1,0 +1,30 @@
+# Starting with the procedure MAX-HEAPIFY, write pseudocode for the procedure 
+# MIN-HEAPIFY(A,i), which performs the corresponding manipulation on a min-heap. 
+# How does the running time of MIN-HEAPIFY compare to that of MAX-HEAPIFY?
+
+# MAX-HEAPIFY(A,i)
+#   l = LEFT(i)
+#   r = RIGHT(i)
+#   if l <= A.heap-size and A[l] > A[i]
+#     largest = l
+#   else largest = i
+#   if r <= A.heap-size and A[r] > A[largest]
+#     largest = r
+#   if largest != i
+#     exchange A[i] with A[largest]
+#     MAX-HEAPIFY(A, largest)
+
+
+MIN-HEAPIFY(A,i)
+  l = LEFT(i)
+  r = RIGHT(i)
+  if l <= A.heap-size and A[l] < A[i]
+    smallest = l
+  else smallest = i
+  if r <= A.heap-size and A[r] < A[smallest]
+    smallest = r
+  if smallest != i
+    exchange A[i] with A[smallest]
+    MIN-HEAPIFY(A, smallest)
+
+#The running time is the same, O(log n). Actually, the algorithm is the same with the exceptions of two comparisons and some names.
