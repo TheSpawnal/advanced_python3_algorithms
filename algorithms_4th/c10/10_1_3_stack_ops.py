@@ -1,5 +1,5 @@
 
-StacSTACK-EMPTY(S)
+STACK-EMPTY(S)
     if S.top == 0
         return TRUE
     else return FALSE
