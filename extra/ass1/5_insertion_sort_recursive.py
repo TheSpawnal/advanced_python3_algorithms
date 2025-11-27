@@ -1,7 +1,6 @@
-
-# Describe (with pseudocode) a recursive algorithm for 
-# insertion sort, which calls on itself to sort the sub-array 
-# A[1:n-1] and the inserts A[1]
+'''
+Describe (with pseudocode) a recursive algorithm for insertion sort, 
+which calls on itself to sort the sub-array A[1:n-1] and the inserts A[1].
 
 RECURSIVE-INSERTION-SORT(A, n)
     if n <= 1
@@ -17,7 +16,7 @@ INSERT(A, n)
         i = i - 1
     A[i + 1] = key
 
-#Alternative with single function:
+Alternative with single function:
 RECURSIVE-INSERTION-SORT(A, n)
     if n <= 1
         return
@@ -30,7 +29,6 @@ RECURSIVE-INSERTION-SORT(A, n)
         i = i - 1
     A[i + 1] = key
 
-'''
 How It Works
 
 Base case: If n ≤ 1, array is already sorted
@@ -38,9 +36,6 @@ Recursive case:
 
 Recursively sort A[1:n-1]
 Insert A[n] into the sorted subarray A[1:n-1]
-
-
-
 Recurrence Analysis
 Recurrence relation:
 T(n) = T(n-1) + Θ(n)
@@ -93,5 +88,7 @@ for arr in test_cases:
     original = arr.copy()
     recursive_insertion_sort(arr)
     print(f"{original} -> {arr}")
+
+
 
 
