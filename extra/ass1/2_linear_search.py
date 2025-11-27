@@ -1,12 +1,9 @@
+'''
 
-
-# Write an algorithm for a linear search of array A[1:n] 
-# looking for element x.  
-# The algorithm should scan through the array, starting at 
-# the first element, and return the index of element x, or the 
-# special value NIL if the element is not found. 
-# Describe a loop invariant, and use it to show your 
-# algorithm is correct.
+Write an algorithm for a linear search of array A[1:n] looking for element x.  
+The algorithm should scan through the array, starting at the first element, 
+and return the index of element x, or the special value NIL if the element is not found. 
+Describe a loop invariant, and use it to show your algorithm is correct.
 
 LINEAR-SEARCH(A, n, x)
     for i = 1 to n
@@ -14,7 +11,7 @@ LINEAR-SEARCH(A, n, x)
             return i
     return NIL
 
-'''
+
 Loop Invariant
 Invariant: At the start of each iteration of the for loop, the subarray A[1:i-1] 
 contains no element equal to x.
@@ -50,13 +47,4 @@ print(linear_search(A, 25))
 A = [7]
 print(linear_search(A, 7))
 print(linear_search(A, 3))
-```
 
-**Output:**
-```
-3
-None
-2
-None
-0
-None
