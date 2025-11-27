@@ -148,23 +148,9 @@ print(s.pop())
 print(s.pop())
 
 
-'''
-**Output:**
-3
-2
-2
-4
-1
 
-
-
-Complexity:
-
-PUSH: O(n) - transfer all elements from q1 to q2
-POP: O(1) - dequeue from q1
-TOP: O(1) - access front of q1
-Space: O(n)
-
-
-
-
+# Complexity:
+# PUSH: O(n) - transfer all elements from q1 to q2
+# POP: O(1) - dequeue from q1
+# TOP: O(1) - access front of q1
+# Space: O(n)
