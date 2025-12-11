@@ -108,8 +108,8 @@ D: the insert method will break raising IndexError:index out of range TRUE
  Setting i to the length of the list after having appended the new element will cause us to
  subsequently look for an item that doesn’t exist at line 17 when we use self.heap[i]. List
  indexes are zero-based, therefore the last index will be equal to the list length minus one. In
- order to fix the issue we should have done i = len(self.heap)-1 or swapped line 15 with
- line 16.
+ order to fix the issue we should have done i = len(self.heap)-1 or swapped line 50 with
+ line 51.
 '''
 #recall mainstrean implementation:
 class MinHeap:
