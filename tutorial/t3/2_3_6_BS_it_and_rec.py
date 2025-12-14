@@ -40,4 +40,13 @@ Recursive-Binary-Search(A,x,low, high)
   else return Recursive-Binary-Search(A,x,low, mid-1)
 '''
 
+Both procedures terminate the search unsuccessfully when the range is empty
+(e,g, low > high) and terminate successfully if the value x has been found. 
+Based on the comparison of x to the middle element in the searched range, the search continues
+with range halved. The recurrence for thhese procedures is therefore T(n) = T(n/2)+ Theta(1),
+whose solution is T(n) = Theta(lg n).
+
+
+
+
 
