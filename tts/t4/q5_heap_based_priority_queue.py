@@ -74,14 +74,42 @@ print(f"after insert 17: {h}")
 
 h.heap_increase_key(4, 25)
 print(f"after increase index 4 to 25: {h}")
-```
-
-**Output:**
-```
-after build: [20, 12, 18, 8, 5]
-after insert 17: [20, 12, 18, 8, 5, 17]
-after increase index 4 to 25: [25, 20, 18, 8, 12, 17]
+'''
 
 
 
+ops: 
+HEAP-INCREASE-key time O(log n) space O(1)
+MAX-HEAP-INSERT O(log n) O(1)amortized
 
+
+Why O(log n)? Bubble-up traverses at most the height of the tree = ⌊log₂ n⌋ levels.
+
+
+Common Pitfalls
+
+Mistake
+
+ConsequenceFix
+
+Dummy value = 0
+Fails for negative keys
+Use -∞ 
+
+Not checking new_key < A[i]
+Violates heap property silently
+Explicit check + error
+
+Loop condition i >= 0
+Off-by-one at root
+Use i > 0
+
+Forget to update i after swap
+Infinite loop
+i ← PARENT(i)
+
+Compare with wrong parent formula
+Incorrect swaps
+(i-1)//2 for 0-indexed
+
+'''
