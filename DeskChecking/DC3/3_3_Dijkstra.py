@@ -1,6 +1,7 @@
 """
 
-code computes the shortest distance between the start_id node and any other node in the graph. The algo used is dijkstra 
+code computes the shortest distance between the start_id node and any other node in the graph. 
+The algo used is dijkstra 
 
 Pseudocode:
 Define dijkstra(graph, start id)
@@ -90,3 +91,30 @@ Solution
  by solving those two issues it would become one.
 
 """
+
+#corrected: 
+
+def dijkstra(graph, start_id: int)->Tuple[dict, dict]:
+    dist = {}
+    parent = {}
+    queue = []
+    for v in graph:
+        parent[v] =-1
+        queue.append(v)
+        dist[v] = float('inf') if v != start_id else 0
+ 
+    while queue:
+        u_val: float = float('inf')
+        u: Node = queue[0]
+        for q in queue:
+            u_val, u = (dist[q.id], q) if dist[q.id] < u_val else (u_val, u)
+        queue.remove(u)
+ 
+        children = [i for i in u.children if i in queue]
+        for v in children:
+            alt = v.weight + dist[u.id]
+            
+            if alt<dist[v.id]:
+                dist[v.id] = alt
+                parent[v.id] = u.id
+    return dist, parent

@@ -1,3 +1,4 @@
+
 '''
  Which of the following statement(s) are true:
 
@@ -10,7 +11,7 @@
  graph then we need to use A* that will instead follow its heuristic without being tricked into
  the cycles. FALSE
 
-√ Dijkstra’s algorithm runs on an unweighted graph (every edge has the same weight), works
+Dijkstra’s algorithm runs on an unweighted graph (every edge has the same weight), works
  just like a classic BFS search. TRUE
  
  • BFS and DFS look for items within a tree. The way they operate is similar but they simply

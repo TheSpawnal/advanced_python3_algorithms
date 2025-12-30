@@ -1,3 +1,26 @@
+
+
+
+'''
+Unfortunately some of the sensors started to malfunction. 
+Presumably, they report the reading value more than once each day. 
+The water management department has pinned it down to the neighbour
+hood De Pijp, and a few suspicious measurements have been identified for you. 
+Since there is some time pressure to fix the problem, 
+your colleague has already sorted the measurements for you late last
+night. Your task is to implement an algorithm that counts occurrences 
+of a given number. Of course, the array may contain duplicated values 
+and the algorithm should return 0 if it can not find any such occurrence.
+Example2. Thefind_occurrencesfunctiontakestwoparameters:
+• array(list[int]): Ansorted array of positive integers
+• n(int)
+The function returns an Integer representing the number of occurrences if found of n in array
+Call: find_occurrences([1, 1, 2, 3, 4, 4, 4, 8, 10], 1)
+Returns (int): 2
+'''
+
+
+
 #!/usr/bin/env python3
 from typing import List
 

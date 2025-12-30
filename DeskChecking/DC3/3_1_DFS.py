@@ -32,8 +32,8 @@ def dfs(graph, start, end):
 """"
 Which of the following statement(s) about the implementation above are true:
 
--The pop " node, path = stack[-1]" is not correctly implemented, we must use the pop() method instead. That
-code will prevent the correct popping. False
+-The pop " node, path = stack[-1]" is not correctly implemented, we must use the pop() method instead. 
+That code will prevent the correct popping. False
 
 -On line :
         node, path = stack[-1]
@@ -63,3 +63,16 @@ to add an item at the end of the list.
 • This is indeed a DFS algorithm since we always look at the current node’s children first. We
 do not need to ”start from the bottom” in order to have a DFS.
 """
+
+
+#corrected version:
+def dfs(graph, start, end):
+    stack = [(start, [start])]
+    while stack:
+        node, path = stack.pop()
+        if node == end:
+            return path
+        for neighbor in graph[node]:
+            if neighbor not in path:
+                stack.append((neighbor, path + [neighbor]))
+    return None
