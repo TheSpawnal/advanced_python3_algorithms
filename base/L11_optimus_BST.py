@@ -366,4 +366,4 @@ every node in it goes one level deeper, adding exactly w[i,j] to the expected co
 root[i,j-1] ≤ root[i,j] ≤ root[i+1,j].
 
 """
-"""
+
