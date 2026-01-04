@@ -1,9 +1,9 @@
 """
-The code implements theOrder class. AnOrderwill contain3fields: id,selectiontime,
+The code implements theOrder class. An Order will contain 3 fields: id,selectiontime,
 shippingtime.The=,<,>operatorshavebeenoverloaded.Abubblesortalgorithmhasbeen
-implemented, thebubblesortalgorithmiswrappedinthesortmethodthatparsesthedataand
-createsOrderobjectstopasstothebubblesortcoremethod.
-"""
+implemented, thebubble sort algorithm is wrapped in the sort method that parses 
+thedat and creates Order objects to pass to the bubble sort core method.
+
 
 Pseudocode
 1 Define Order class
@@ -32,49 +32,51 @@ Pseudocode
 21    return list of [id of each order in array]
 
 Code:
+"""
+ class Order:
+   def init (self, id, selectiontime, shippingtime):
+     self.id: int = id
+     self.selectiontime: int = selectiontime
+     self.shippingtime: int = shippingtime
 
-1 class Order:
-2   def init (self, id, selectiontime, shippingtime):
-3     self.id: int = id
-4     self.selectiontime: int = selectiontime
-5     self.shippingtime: int = shippingtime
-6
-7   def eq (self, other):
-8     return (self.selectiontime + self.shippingtime) == (other.
-        selectiontime + other.shippingtime)
-9
-10 def gt (self, other):
-11   return (self.selectiontime + self.shippingtime)>(other.
-        selectiontime + other.shippingtime)
-12
-13
-14 def bubbleSort(array: List[Order]):
-15   n = len(array)
-16
-17   for i in range(n−1):
-18
-19     for j in range(1, n−i−1):
-20
-21       if array[j]>array[j+1]:
-22           array[j], array[j+1] = array[j+1], array[j]
-23
-24 def sort(data: List[Tuple[int,int,int]])−>List[int]:
-25   arr: List[Order] = []
-26
-27   for id, selectiont, shipping t in data:
-28     arr.append(Order(id, selectiont, shipping t))
-29
-30    bubbleSort(arr)
-31
-32    return [a.id for a in arr]
+   def eq (self, other):
+     return (self.selectiontime + self.shippingtime) == (other.
+       selectiontime + other.shippingtime)
+
+ def gt (self, other):
+   return (self.selectiontime + self.shippingtime)>(other.
+      selectiontime + other.shippingtime)
 
 
--On line 17, range(n-1) prevents the i index to traverse all the elements leaving the last
-element untouched.True:
-The range in python includes the first item (0 by default), but excludes the last item. Since
-the last item of a list has index = the length of the list-1, we have to pass the length of the
-list to range since it will not reach it, but we’ll stop at the length- 1, which is our last index.
-Using n-1 will therefore prevent the last element to be ever visited.
+ def bubbleSort(array: List[Order]):
+   n = len(array)
+
+   for i in range(n-1): #line17
+
+     for j in range(1, n-i-1):
+
+       if array[j]>array[j+1]:
+           array[j], array[j+1] = array[j+1], array[j]
+
+ def sort(data: List[Tuple[int,int,int]])->List[int]:
+   arr: List[Order] = []
+
+   for id, selectiont, shipping t in data:
+     arr.append(Order(id, selectiont, shipping t))
+
+    bubbleSort(arr)
+
+    return [a.id for a in arr]
+
+
+'''
+-On line 17, range(n-1) prevents the i index to traverse all the elements leaving
+ the last element untouched.True:
+The range in python includes the first item (0 by default), but excludes the last item. 
+Since the last item of a list has index = the length of the list-1, we have to pass 
+the length of the list to range since it will not reach it, but we’ll stop at the 
+length- 1, which is our last index. Using n-1 will therefore prevent the last element 
+to be ever visited.
 
 -Theimplementation is correct and contains no bug.False
   
@@ -82,11 +84,12 @@ Using n-1 will therefore prevent the last element to be ever visited.
 • being j in the range(1, n-i-1) it will start from 1 instead of 0, causing the first element
 of the list to never be compared with the second.
   
--on line 22, a support variable should be used to swap the array values, otherwise the result could be non deterministic.False
-• Inpython we are allowed to use this kind of object swap without relying on support variables.
-Due to the order the expression is evaluated, in the assignment cases python always evaluates
-the right-hand side of the expression first.
+-on line 22, a support variable should be used to swap the array values, 
+otherwise the result could be non deterministic.False
+• Inpython we are allowed to use this kind of object swap without relying 
+on support variables.
+Due to the order the expression is evaluated, in the assignment cases python always 
+evaluates the right-hand side of the expression first.
 
-
-
+'''
 
