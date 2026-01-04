@@ -8,73 +8,71 @@ Write HEAP-INCREASE-KEY and MAX-HEAP-INSERT
 • Points lost for logical errors (not checking parent, wrong 
 dummy value)
 
+PARENT(i)
+1  return ⌊i/2⌋
+LEFT(i)
+1  return 2i
+RIGHT(i)
+1  return 2i + 1
 
-FUNCTION MAX-HEAP-INSERT(A, heap_size, key):
-    ──────────────────────────────────────────────
-    # Step 1: Expand heap with dummy value
-    #         Use -∞ to guarantee increase is valid
-    ──────────────────────────────────────────────
-    
-    heap_size ← heap_size + 1
-    A[heap_size - 1] ← -∞      # dummy: smallest possible
-    
-    ──────────────────────────────────────────────
-    # Step 2: Use INCREASE-KEY to place correctly
-    #         This handles all bubble-up logic
-    ──────────────────────────────────────────────
-    
-    HEAP-INCREASE-KEY(A, heap_size - 1, key)
-    
-    RETURN heap_size
+MAX-HEAPIFY(A, i)
+1  l = LEFT(i)
+2  r = RIGHT(i)
+3  if l ≤ A.heap-size and A[l] > A[i]
+4    largest = l
+5  else largest = i
+6  if r ≤ A.heap-size and A[r] > A[largest]
+7    largest = r
+8  if largest ≠ i
 
 
-Why -∞ as dummy?
-─────────────────
-1. Any real key ≥ -∞, so increase-key precondition holds
-2. Guarantees the new node will bubble up correctly
-3. Using 0 or None would fail for negative keys
-
-'''
-
-import math
-
-class MaxHeap:
-    def __init__(self):
-        self.data = []
-    
-    def parent(self, i):
-        return (i - 1) // 2
-    
-    def heap_increase_key(self, i, new_key):
-        if new_key < self.data[i]:
-            raise ValueError("new key smaller than current")
-        
-        self.data[i] = new_key
-        
-        while i > 0 and self.data[self.parent(i)] < self.data[i]:
-            p = self.parent(i)
-            self.data[i], self.data[p] = self.data[p], self.data[i]
-            i = p
-    
-    def insert(self, key):
-        self.data.append(-math.inf)
-        self.heap_increase_key(len(self.data) - 1, key)
-    
-    def __str__(self):
-        return str(self.data)
+BUILD-MAX-HEAP(A, n)
+1 A.heap-size = n
+2 for i = ⌊n/2⌋ downto 1
+3   MAX-HEAPIFY(A, i)
 
 
-h = MaxHeap()
-for k in [20, 12, 18, 8, 5]:
-    h.insert(k)
-print(f"after build: {h}")
+HEAPSORT(A, n)
+1 BUILD-MAX-HEAP(A, n)
+2 for i = n downto 2
+3    exchange A[1] with A[i]
+4    A.heap-size = A.heap-size – 1
+5    MAX-HEAPIFY(A, 1)
 
-h.insert(17)
-print(f"after insert 17: {h}")
+MAX-HEAP-MAXIMUM(A)
+1 if A.heap-size < 1
+2    error “heap underflow”
+3 return A[1]
 
-h.heap_increase_key(4, 25)
-print(f"after increase index 4 to 25: {h}")
-'''
+MAX-HEAP-EXTRACT-MAX(A)
+1 max = MAX-HEAP-MAXIMUM(A)
+2 A[1] = A[A.heap-size]
+3 A.heap-size = A.heap-size – 1
+4 MAX-HEAPIFY(A, 1)
+5 return max
+
+
+
+MAX-HEAP-INCREASE-KEY(A, x, k)
+1 if k < x.key
+2   error “new key is smaller than current key”
+3 x.key = k
+4 find the index i in array A where object x occurs
+5 while i > 1 and A[PARENT(i)].key < A[i].key
+6   exchange A[i] with A[PARENT(i)], updating the information that
+      maps priority queue objects to array indices
+7    i = PARENT(i)
+
+MAX-HEAP-INSERT(A, x, n)
+1 if A.heap-size == n
+2   error “heap overflow”
+3 A.heap-size = A.heap-size + 1
+4 k = x.key
+5 x.key = –∞
+6 A[A.heap-size] = x
+7 map x to index heap-size in the array
+8 MAX-HEAP-INCREASE-KEY(A, x, k)
+
 
 
 
@@ -83,7 +81,8 @@ HEAP-INCREASE-key time O(log n) space O(1)
 MAX-HEAP-INSERT O(log n) O(1)amortized
 
 
-Why O(log n)? Bubble-up traverses at most the height of the tree = ⌊log₂ n⌋ levels.
+Why O(log n)? 
+Bubble-up traverses at most the height of the tree = ⌊log₂ n⌋ levels.
 
 
 Common Pitfalls
